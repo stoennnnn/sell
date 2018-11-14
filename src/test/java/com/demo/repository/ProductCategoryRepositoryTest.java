@@ -24,7 +24,7 @@ public class ProductCategoryRepositoryTest {
         System.out.println(222);
         //第三次新增
         System.out.println(333);
-        //第四次新增
+        //第四次新
         System.out.println(444);
     }
 }
