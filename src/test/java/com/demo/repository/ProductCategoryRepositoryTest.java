@@ -21,5 +21,7 @@ public class ProductCategoryRepositoryTest {
         ProductCategory category = repository.findById(1).get();
         System.out.print(category.toString());
         System.out.println(1111);
+        System.out.println(222);
+
     }
 }
