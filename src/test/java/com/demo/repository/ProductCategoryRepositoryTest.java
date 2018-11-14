@@ -22,6 +22,9 @@ public class ProductCategoryRepositoryTest {
         System.out.print(category.toString());
         System.out.println(1111);
         System.out.println(222);
+        //第三次新增
+        System.out.println(333);
+
 
     }
 }
