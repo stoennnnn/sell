@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<configuration>
+    <!-- 控制台日制配置 -->
+	<appender name="consolelog" class="ch.qos.logback.core.ConsoleAppender">
+	   <layout class="ch.qos.logback.classic.PatternLayout">
+	       <pattern>
+	           %d -  %msg%n
+	       </pattern>
+	   </layout>
+	</appender>
+	<!-- 文件日志配置 info级别-->
+	<appender name="fileinfolog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+       <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>warn</level>
+            <onMatch>deny</onMatch>
+            <onMismatch>accept</onMismatch>
+       </filter>
+	   <encoder>
+	       <pattern>
+	           %d - %msg%n
+	       </pattern>
+	   </encoder>
+	   <!-- 滚动方案 -->
+	   <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+	       <!-- 路径 -->
+	       <fileNamePattern>C:/Users/38213/Desktop/workspace/sell/infolog_%d.log</fileNamePattern>
+	   </rollingPolicy>
+	</appender>
+    <!-- 文件日志配置 error级别 -->
+    <appender name="filerrlog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+       <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>error</level>
+       </filter>
+       <encoder>
+           <pattern>
+               %msg%n
+           </pattern>
+       </encoder>
+       <!-- 滚动方案 -->
+       <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+           <!-- 路径 -->
+           <fileNamePattern>C:/Users/38213/Desktop/workspace/sell/errlog_%d.log</fileNamePattern>
+       </rollingPolicy>
+    </appender>	
+    <root level="info">
+	   <appender-ref ref="consolelog"/>
+       <appender-ref ref="fileinfolog"/>
+       <appender-ref ref="filerrlog"/>
+	</root>
+</configuration>
