@@ -37,7 +37,7 @@ public class ProductInfo {
     //类目编号
     private  Integer categoryType;
 
-    //商品状态 0 代表正常 1代表下架、T
+    //商品状态 0 代表正常 1代表下架
     private  Integer productstatus;
 
 }
