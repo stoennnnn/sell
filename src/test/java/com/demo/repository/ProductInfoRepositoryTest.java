@@ -27,7 +27,7 @@ public class ProductInfoRepositoryTest {
         productInfo.setProductDescription("嗡嗡嗡");
         productInfo.setProductIcon("www.baidu.com");
         productInfo.setProductStock(12);
-        productInfo.setProductPrice(new BigDecimal(12.11));
+        productInfo.setProductPrice(new BigDecimal(12.22));
         productInfo.setProductstatus(0);
         ProductInfo save = repository.save(productInfo);
         Assert.assertNotNull(save);
