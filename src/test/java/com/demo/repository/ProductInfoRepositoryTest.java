@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 /**
  * Created by 张启磊 on 2018-11-19.
@@ -21,15 +22,15 @@ public class ProductInfoRepositoryTest {
 
     @Test
     public void save() {
-        ProductInfo productInfo = new ProductInfo();
-        productInfo.setProductName("网红");
-        productInfo.setProductId("22222");
-        productInfo.setProductDescription("嗡嗡嗡");
-        productInfo.setProductIcon("www.baidu.com");
-        productInfo.setProductStock(12);
-        productInfo.setProductPrice(new BigDecimal(12.22));
-        productInfo.setProductstatus(0);
-        ProductInfo save = repository.save(productInfo);
+        ProductInfo productInfo = new ProductInfo("22222222","网红尿",new BigDecimal(12.99),
+        22,"全网最好喝的尿","www.google.com",8,1);
+       ProductInfo save= repository.save(productInfo);
         Assert.assertNotNull(save);
+    }
+
+    @Test
+    public void findByProductStatus(){
+        List<ProductInfo> productList = repository.findByProductStatus(0);
+        Assert.assertNotEquals(0,productList.size());
     }
 }

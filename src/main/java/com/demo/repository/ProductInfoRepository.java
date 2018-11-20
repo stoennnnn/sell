@@ -9,5 +9,5 @@ import java.util.List;
  * Created by 张启磊 on 2018-11-19.
  */
 public interface  ProductInfoRepository  extends JpaRepository<ProductInfo,String>{
-     List<ProductInfo> findByCategoryTypeStatus(Integer productInfoStastus );
+     List<ProductInfo> findByProductStatus (Integer productStatus );
 }

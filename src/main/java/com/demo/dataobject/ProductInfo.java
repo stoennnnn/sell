@@ -38,6 +38,19 @@ public class ProductInfo {
     private  Integer categoryType;
 
     //商品状态 0 代表正常 1代表下架
-    private  Integer productstatus;
+    private  Integer productStatus;
 
+    public  ProductInfo(){};
+    public ProductInfo(String productId, String productName, BigDecimal productPrice,
+                       Integer productStock, String productDescription, String productIcon,
+                       Integer categoryType, Integer productStatus) {
+        this.productId = productId;
+        this.productName = productName;
+        this.productPrice = productPrice;
+        this.productStock = productStock;
+        this.productDescription = productDescription;
+        this.productIcon = productIcon;
+        this.categoryType = categoryType;
+        this.productStatus = productStatus;
+    }
 }
