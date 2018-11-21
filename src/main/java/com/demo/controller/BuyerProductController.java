@@ -49,7 +49,7 @@ public class BuyerProductController {
                 }
             productVO.setCategoryName(category.getCategoryName());
             productVO.setCategoryType(category.getCategoryType());
-            productVO.setCategoryFoods(productInfoVOS);
+            productVO.setCategoryFoods(productInfoVOS) ;
             productVOs.add(productVO);
         }
 //        ResultVO resultVO = new ResultVO<>();
