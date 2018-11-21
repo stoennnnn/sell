@@ -25,3 +25,6 @@
 /.nb-gradle/
 /.mvn/
 /META-INF/
+!/src/main/resources/
+src/main/resources/static/
+src/main/resources/templates/

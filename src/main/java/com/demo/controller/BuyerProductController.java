@@ -7,7 +7,7 @@ import com.demo.dataobject.ProductCategory;
 import com.demo.dataobject.ProductInfo;
 import com.demo.service.CategoryService;
 import com.demo.service.ProductService;
-import com.demo.utils.ResutVOUtil;
+import com.demo.utils.ResultVOUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -54,8 +54,7 @@ public class BuyerProductController {
         }
 //        ResultVO resultVO = new ResultVO<>();
 //        resultVO.setData(productVOs);
-        return ResutVOUtil.success(productVOs);
-
+        return  ResultVOUtil.success(productVOs);
     }
 
 }
