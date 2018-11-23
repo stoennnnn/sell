@@ -25,7 +25,7 @@
 	   <!-- 滚动方案 -->
 	   <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 	       <!-- 路径 -->
-	       <fileNamePattern>C:/Users/38213/Desktop/workspace/sell/infolog_%d.log</fileNamePattern>
+	       <fileNamePattern>C:/Users/26725/Desktop/learn/sell_log/infolog_%d.log</fileNamePattern>
 	   </rollingPolicy>
 	</appender>
     <!-- 文件日志配置 error级别 -->
@@ -41,7 +41,7 @@
        <!-- 滚动方案 -->
        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
            <!-- 路径 -->
-           <fileNamePattern>C:/Users/38213/Desktop/workspace/sell/errlog_%d.log</fileNamePattern>
+           <fileNamePattern>C:/Users/26725/Desktop/learn/sell_log/errlog_%d.log</fileNamePattern>
        </rollingPolicy>
     </appender>	
     <root level="info">

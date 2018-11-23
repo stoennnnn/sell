@@ -6,15 +6,5 @@ spring:
     url: jdbc:mysql://localhost:3306/sell?characterEncoding=utf-8&serverTimezone=UTC&useSSL=false
   jpa:
       show-sql: true
-    
-
-#简单的日志配置
 server: 
   context-path: /sell
-logging: 
-  pattern:
-    console: "%d - %msg%n"
-#  path: C:/Users/26725/Desktop/learn/sell_log
-  file: C:/Users/38213/Desktop/workspace/sell/sell.log
-  level:
-    com.demo.logTest: debug
