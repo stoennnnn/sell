@@ -1,6 +1,5 @@
 package com.demo.service;
 
-import com.demo.dataobject.ProductCategory;
 import com.demo.dataobject.ProductInfo;
 
 import java.util.List;
@@ -13,4 +12,7 @@ public interface ProductService {
     List<ProductInfo> findAll();
     List<ProductInfo> findByProductStatus(Integer productStatus);
     ProductInfo save(ProductInfo productInfo);
+    //加减库存
+    ProductInfo increaseStock();
+
 }

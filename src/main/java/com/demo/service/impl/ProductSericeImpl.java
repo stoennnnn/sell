@@ -35,4 +35,9 @@ public class ProductSericeImpl implements ProductService {
     public ProductInfo save(ProductInfo productInfo) {
         return repository.save(productInfo);
     }
+
+    @Override
+    public ProductInfo increaseStock() {
+        return null;
+    }
 }

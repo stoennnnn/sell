@@ -1,8 +1,6 @@
 package com.demo.dto;
 
 import com.demo.dataobject.OrderDetail;
-import com.demo.enums.OrderStatus;
-import com.demo.enums.PayStatus;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -22,9 +20,9 @@ public class OrderDto {
     private BigDecimal buyerAmount;
     private Integer orderStatus;
     private Integer payStatus;
+    //订单明细列表
     private List<OrderDetail> orderDetails;
-    //商品id
-    private  String productId ;
-    //购买数量
-    private Integer productQuantity;
+    //items列表
+    private List<CartDto> items;
+
 }
