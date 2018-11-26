@@ -51,6 +51,6 @@ public class ProductInfo {
         this.productDescription = productDescription;
         this.productIcon = productIcon;
         this.categoryType = categoryType;
-        this.productStatus = productStatus;
+        this.productStatus = productStatus ;
     }
 }
