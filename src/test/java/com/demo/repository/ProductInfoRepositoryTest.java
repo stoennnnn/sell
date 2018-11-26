@@ -22,8 +22,8 @@ public class ProductInfoRepositoryTest {
 
     @Test
     public void save() {
-        ProductInfo productInfo = new ProductInfo("22222222","网红尿",new BigDecimal(12.99),
-        22,"全网最好喝的尿","www.google.com",8,1);
+        ProductInfo productInfo = new ProductInfo("33333333","网红屁",new BigDecimal(12.99),
+        22,"全网最好喝的屁","www.google.com",9,1);
        ProductInfo save= repository.save(productInfo);
         Assert.assertNotNull(save);
     }
