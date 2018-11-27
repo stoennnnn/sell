@@ -1,6 +1,5 @@
 package com.demo.service.impl;
 
-import com.demo.dataobject.OrderDetail;
 import com.demo.dto.CartDto;
 import com.demo.dto.OrderDto;
 import com.demo.service.OrderService;
@@ -9,12 +8,12 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by 26725 on 2018/11/27.
@@ -26,7 +25,7 @@ public class OrderServiceImpTest {
     private OrderService orderService;
 
     @Test
-    public void create() throws Exception {
+    public OrderDto create() throws Exception {
 
         OrderDto orderDTO = new OrderDto();
         orderDTO.setBuyerName("张启磊");
@@ -40,12 +39,25 @@ public class OrderServiceImpTest {
         orderDTO.setItems(cartDtos);
         OrderDto orderDto = orderService.create(orderDTO);
         Assert.assertNotNull(orderDto);
+        return orderDto;
     }
 
     @Test
     public void findOne() throws Exception {
         OrderDto orderDto = orderService.findOne("1543301536456485560");
         Assert.assertNotNull(orderDto);
+    }
+
+    @Test
+    public void findList(){
+        PageRequest request = new PageRequest(0,5);
+        Page<OrderDto> dtoPage = orderService.findList("wp123", request);
+    }
+
+    @Test
+    public void cancel() throws Exception {
+        OrderDto orderDto =create();
+        OrderDto cancel = orderService.cancel(orderDto);
     }
 
 }

@@ -12,10 +12,10 @@ import com.demo.enums.ResultEnum;
 import com.demo.exception.SellException;
 import com.demo.repository.OrderDetailRepository;
 import com.demo.repository.OrderMasterRepository;
-import com.demo.repository.ProductInfoRepository;
 import com.demo.service.OrderService;
 import com.demo.service.ProductService;
 import com.demo.utils.KeyUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -26,15 +26,15 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 /**
  * Created by 26725 on 2018/11/26.
  */
 @Service
+@Slf4j
 public class OrderServiceImp implements OrderService{
     @Autowired
     private ProductService productService;
@@ -117,9 +117,47 @@ public class OrderServiceImp implements OrderService{
     public Page<OrderDto> findList(String buyerOpenid, Pageable pageable) {
         Page<OrderMaster> orderMasters = orderMasterRepository.findByBuyerOpenid(buyerOpenid, pageable);
         List<OrderDto> orderDtos = OrderMaster2OrderDtoConverter.convertList(orderMasters.getContent());
-//        new PageImpl<>() pageImpl是oage的实现类
+        //查询orderDetai信息
+        ArrayList<OrderDetail> orderDetails = new ArrayList<>();
+        for (OrderDto orderDto : orderDtos) {
+            List<OrderDetail> details = orderDetailRepository.findByOrderId(orderDto.getOrderId());
+            orderDto.setOrderDetails(details);
+        }
+        //  new PageImpl<>() pageImpl是Pageable的实现类
+        PageImpl  pageImpl = new PageImpl(orderDtos,pageable,2);
+        return pageImpl;
+    }
 
-        return null;
+    @Override
+    public OrderDto cancel(OrderDto orderDto) {
+        //判断订单状态
+        if (orderDto.getOrderStatus().equals(OrderStatus.NEW)){
+            log.error("【取消订单】状态错误 orderId={},orderStatus={}",orderDto.getOrderId(),orderDto.getOrderStatus());
+            throw  new SellException(ResultEnum.ORDER_STATUS_ERROR);
+        }
+        //更新订单状态
+        OrderMaster orderMaster = new OrderMaster();
+        BeanUtils.copyProperties(orderDto, orderMaster);
+        orderMaster.setOrderStatus(OrderStatus.DELETE.getCode());
+        OrderMaster o1=orderMasterRepository.save(orderMaster);
+        if (o1.getPayStatus()!=OrderStatus.DELETE.getCode()) {
+            log.error("【取消订单】更新失败,orderStatus={}", orderDto.getOrderId(), orderDto.getOrderStatus());
+            throw new SellException(ResultEnum.ORDER_UPDATE_ERROR);
+        }
+        //增加库存
+        if (null==orderDto.getOrderDetails())
+        {
+            log.error("【取消订单】 订单中无此商品 orderId={}",orderDto.getOrderId());
+            throw new SellException(ResultEnum.ORDERDETAIL_EMPTY);
+        }
+        //转换orderDetail为orderCArt
+        List<CartDto> cartDtos =orderDto.getItems().stream()
+                .map(e->new CartDto(e.getProductId(),e.getProductQuantity()))
+                .collect(Collectors.toList());
+        productService.increaseStock(cartDtos);
+        return orderDto;
+        //如果已经付款需要退款
+        //todo
     }
 
 
