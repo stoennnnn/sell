@@ -21,13 +21,13 @@ public class OrderMaster {
     @Id
     private  String  orderId;
 
-    private String buyerNmae;
+    private String buyerName;
 
     private  String  buyerPhone;
 
     private String buyerAddress;
     //微信id
-    private  String  buyerOpenId;
+    private  String  buyerOpenid;
 
     private BigDecimal buyerAmount;
 

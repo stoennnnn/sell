@@ -20,10 +20,6 @@ public class OrderDetailRepositoryTest {
     private OrderDetailRepository repository;
     @Test
     public void findByOrderId() throws Exception {
-        //传一个分页参数
-        PageRequest request = new PageRequest(0,2);
-        Page<OrderDetail> orderDetails = repository.findByOrderId("12345", request);
-        Assert.assertNotNull(orderDetails);
     }
 
 }

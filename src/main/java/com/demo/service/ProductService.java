@@ -1,6 +1,7 @@
 package com.demo.service;
 
 import com.demo.dataobject.ProductInfo;
+import com.demo.dto.CartDto;
 
 import java.util.List;
 
@@ -13,6 +14,6 @@ public interface ProductService {
     List<ProductInfo> findByProductStatus(Integer productStatus);
     ProductInfo save(ProductInfo productInfo);
     //加减库存
-    ProductInfo increaseStock();
-
+    void increaseStock(List<CartDto> list);
+    void decreaseStock(List<CartDto> list);
 }

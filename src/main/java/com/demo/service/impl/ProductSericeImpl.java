@@ -1,6 +1,9 @@
 package com.demo.service.impl;
 
 import com.demo.dataobject.ProductInfo;
+import com.demo.dto.CartDto;
+import com.demo.enums.ResultEnum;
+import com.demo.exception.SellException;
 import com.demo.repository.ProductInfoRepository;
 import com.demo.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +19,7 @@ public class ProductSericeImpl implements ProductService {
 
     @Autowired
     private ProductInfoRepository repository;
+
     @Override
     public ProductInfo findOne(String productId) {
         return repository.findOne(productId);
@@ -37,7 +41,22 @@ public class ProductSericeImpl implements ProductService {
     }
 
     @Override
-    public ProductInfo increaseStock() {
-        return null;
+    public void increaseStock(List<CartDto> list) {
+
     }
+
+    @Override
+    public void decreaseStock(List<CartDto> list) {
+        for (CartDto cartDto : list) {
+            ProductInfo productInfo = findOne(cartDto.getProductId());
+            if (productInfo==null)
+                throw  new SellException(ResultEnum.PRODUCT_NOT_EXIST);
+            Integer stock = productInfo.getProductStock() - cartDto.getProductQuantity();
+            if (stock<0)
+                throw new SellException(ResultEnum.PRODUCT_NOT_EXIST);
+            productInfo.setProductStock(stock);
+            repository.save(productInfo);
+        }
+    }
+
 }

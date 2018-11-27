@@ -22,7 +22,7 @@ public class OrderMasterRepositoryTest {
     public void findByBuyerOpenId() throws Exception {
         //传一个分页参数
         PageRequest request = new PageRequest(0,1);
-        Page<OrderMaster> result = repository.findByBuyerOpenId("wp123",request);
+        Page<OrderMaster> result = repository.findByBuyerOpenid("wp123",request);
         Assert.assertNotEquals(0,result);
     }
 

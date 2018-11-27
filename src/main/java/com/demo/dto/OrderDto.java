@@ -13,16 +13,16 @@ import java.util.List;
 @Data
 public class OrderDto {
     private String orderId;
-    private String buyerNmae;
+    private String buyerName;
     private String buyerPhone;
     private String buyerAddress;
-    private String buyerOpenId;
+    private String buyerOpenid;
     private BigDecimal buyerAmount;
     private Integer orderStatus;
     private Integer payStatus;
+    //购物车参数集合
+    private List<CartDto> items;
     //订单明细列表
     private List<OrderDetail> orderDetails;
-    //items列表
-    private List<CartDto> items;
 
 }
