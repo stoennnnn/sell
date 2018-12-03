@@ -160,5 +160,27 @@ public class OrderServiceImp implements OrderService{
         //todo
     }
 
+    /**
+     * 订单完结
+     * @param orderDto
+     * @return
+     */
+    @Override
+    public OrderDto finish(OrderDto orderDto) {
+        //判断订单状态
+        if (orderDto.getOrderStatus().equals(OrderStatus.NEW.getCode())){
+            log.error("【完结订单】 订单状态不正确 orderId=",orderDto.getOrderStatus());
+            throw new SellException(ResultEnum.ORDER_STATUS_ERROR);
+        }
+        //修改订单状态
+        orderDto.setOrderStatus(OrderStatus.FINISH.getCode());
+        OrderMaster orderMaster = new OrderMaster();
+        BeanUtils.copyProperties(orderDto,orderMaster);
+        OrderMaster result = orderMasterRepository.save(orderMaster);
+        if (null==result)
+            log.error("【更新失败】");
+        return orderDto;
+    }
+
 
 }
