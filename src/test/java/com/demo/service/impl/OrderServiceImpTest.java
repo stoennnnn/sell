@@ -3,6 +3,7 @@ package com.demo.service.impl;
 import com.demo.dto.CartDto;
 import com.demo.dto.OrderDto;
 import com.demo.enums.OrderStatus;
+import com.demo.enums.PayStatus;
 import com.demo.service.OrderService;
 import org.junit.Assert;
 import org.junit.Test;
@@ -44,10 +45,9 @@ public class OrderServiceImpTest {
     }
 
     @Test
-    public OrderDto findOne() throws Exception {
+    public void findOne() throws Exception {
         OrderDto orderDto = orderService.findOne("1543301536456485560");
         Assert.assertNotNull(orderDto);
-        return  orderDto;
     }
 
     @Test
@@ -64,8 +64,15 @@ public class OrderServiceImpTest {
 
     @Test
     public void finish() throws Exception {
-        OrderDto orderDto =this.findOne();
-        OrderDto finish = orderService.finish(orderDto);
+        OrderDto one = orderService.findOne("1543301536456485560");
+        OrderDto finish = orderService.finish(one);
         Assert.assertEquals(OrderStatus.FINISH.getCode(),finish.getOrderStatus());
+    }
+
+    @Test
+    public void paid() throws Exception {
+        OrderDto one = orderService.findOne("1543301536456485560");
+        OrderDto paid = orderService.paid(one);
+        Assert.assertEquals(PayStatus.SUCCESS.getCode(),paid.getPayStatus());
     }
 }

@@ -168,8 +168,8 @@ public class OrderServiceImp implements OrderService{
     @Override
     public OrderDto finish(OrderDto orderDto) {
         //判断订单状态
-        if (orderDto.getOrderStatus().equals(OrderStatus.NEW.getCode())){
-            log.error("【完结订单】 订单状态不正确 orderId=",orderDto.getOrderStatus());
+        if (!orderDto.getOrderStatus().equals(OrderStatus.NEW.getCode())){
+            log.error("【完结订单】 订单状态不正确 orderId={}",orderDto.getOrderId());
             throw new SellException(ResultEnum.ORDER_STATUS_ERROR);
         }
         //修改订单状态
@@ -182,5 +182,30 @@ public class OrderServiceImp implements OrderService{
         return orderDto;
     }
 
+    /**
+     * 订单支付
+     * @param orderDto
+     * @return
+     */
+    public OrderDto paid(OrderDto orderDto){
+        //判断订单状态
+        if (!orderDto.getOrderStatus().equals(OrderStatus.FINISH.getCode())){
+            log.error("【订单支付完成】 订单状态不正确 orderId={}",orderDto.getOrderId());
+            throw new SellException(ResultEnum.ORDER_STATUS_ERROR);
+        }
+        //判断支付状态
+        if (!orderDto.getPayStatus().equals(PayStatus.WAIT.getCode())){
+            log.error("【订单支付完成】 支付状态不正确 orderId={}",orderDto.getOrderId());
+            throw new SellException(ResultEnum.ORDER_PAY_STATUS_ERROR);
+        }
+        //修改支付状态
+        orderDto.setPayStatus(PayStatus.SUCCESS.getCode());
+        OrderMaster orderMaster = new OrderMaster();
+        BeanUtils.copyProperties(orderDto,orderMaster);
+        OrderMaster result = orderMasterRepository.save(orderMaster);
+        if (null==result)
+            log.error("【更新失败】");
+        return orderDto;
+    }
 
 }
