@@ -13,15 +13,17 @@ import org.springframework.beans.BeanUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
+/*转换类
  * Created by 张启磊 on 2018-12-5.
  */
 public class OrderForm2OrderDtoConform {
     public static OrderDto convert(OrderForm orderForm){
         OrderDto orderDto = new OrderDto();
         BeanUtils.copyProperties(orderForm,orderDto);
-        String orderId = KeyUtils.genUniqueKey();
-        orderDto.setOrderId(orderId);
+        orderDto.setBuyerName(orderForm.getName());
+        orderDto.setBuyerPhone(orderForm.getPhone());
+        orderDto.setBuyerAddress(orderForm.getAddress());
+        orderDto.setBuyerOpenid(orderForm.getOpenid());
         //json转List
         Gson gson = new Gson();
         List<CartDto> cartDtoList = new ArrayList<CartDto>();

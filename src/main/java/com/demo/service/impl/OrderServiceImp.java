@@ -75,6 +75,7 @@ public class OrderServiceImp implements OrderService{
         //保存订单信息
         BeanUtils.copyProperties(dto, orderMaster);
         orderMaster.setOrderId(orderId);
+        dto.setOrderId(orderId);
         orderMaster.setBuyerAmount(buyerAmount);
         orderMaster.setOrderStatus(OrderStatus.NEW.getCode());
         orderMaster.setPayStatus(PayStatus.WAIT.getCode());
