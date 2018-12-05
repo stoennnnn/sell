@@ -8,6 +8,9 @@ import lombok.Getter;
  */
 @Getter
 public enum ResultEnum {
+    PARAM_ERROR(1,"商品参数错误 "),
+    CART_EMPTY(2,"购物车为空 "),
+
     PRODUCT_NOT_EXIST(10,"商品不存在"),
     PRODUCT_STOCK_ERROR(11,"商品不正确"),
     ORDER_NOT_EXIST(12,"商品不存在"),
