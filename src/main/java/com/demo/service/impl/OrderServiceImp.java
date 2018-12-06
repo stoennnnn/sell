@@ -144,7 +144,7 @@ public class OrderServiceImp implements OrderService{
         OrderMaster o1=orderMasterRepository.save(orderMaster);
         if (o1.getPayStatus()!=OrderStatus.DELETE.getCode()) {
             log.error("【取消订单】更新失败,orderStatus={}", orderDto.getOrderStatus());
-            throw new SellException(ResultEnum.ORDER_UPDATE_ERROR );
+            throw new  SellException(ResultEnum.ORDER_UPDATE_ERROR );
         }
         //增加库存
         if (null==orderDto.getOrderDetails())
