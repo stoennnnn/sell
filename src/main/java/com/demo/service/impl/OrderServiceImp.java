@@ -130,6 +130,7 @@ public class OrderServiceImp implements OrderService{
     }
 
     @Override
+    @Transactional
     public OrderDto cancel(OrderDto orderDto) {
         //判断订单状态
         if (orderDto.getOrderStatus().equals(OrderStatus.NEW)){
@@ -142,7 +143,7 @@ public class OrderServiceImp implements OrderService{
         orderMaster.setOrderStatus(OrderStatus.DELETE.getCode());
         OrderMaster o1=orderMasterRepository.save(orderMaster);
         if (o1.getPayStatus()!=OrderStatus.DELETE.getCode()) {
-            log.error("【取消订单】更新失败,orderStatus={}", orderDto.getOrderId(), orderDto.getOrderStatus());
+            log.error("【取消订单】更新失败,orderStatus={}", orderDto.getOrderStatus());
             throw new SellException(ResultEnum.ORDER_UPDATE_ERROR);
         }
         //增加库存
