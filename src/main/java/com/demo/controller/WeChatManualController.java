@@ -35,7 +35,7 @@ public class WeChatManualController {
              code=CODE&
              grant_type=authorization_code
         */
-        String url = "https://api.weixin.qq.com/sns/oauth2/access_token?" +
+        String url =  "https://api.weixin.qq.com/sns/oauth2/access_token?" +
                 "appid=wx5271c0fec72093db&" +
                 "secret=246690309fedaf15eb62ac16ce12bae9&" +
                 "code="+code+"&" +
