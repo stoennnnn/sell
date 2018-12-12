@@ -8,6 +8,7 @@ import org.hibernate.annotations.DynamicUpdate;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * 订单实体类
@@ -35,6 +36,11 @@ public class OrderMaster {
     private Integer orderStatus  = OrderStatus.NEW.getCode();
     //支付状态,默认0待支付
     private Integer payStatus = PayStatus.WAIT.getCode();
+    //创建时间
+    private Date createTime;
+    //修改时间
+    private  Date updateTime;
+
 
 
 }

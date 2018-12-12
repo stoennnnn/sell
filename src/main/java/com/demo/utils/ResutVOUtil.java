@@ -6,6 +6,9 @@ import com.demo.VO.ResultVO;
  * Created by 26725 on 2018/11/21.
  */
 public class ResutVOUtil {
+    public  static ResultVO success(){
+        return  success();
+    }
     /**
      * 查询成功
      * @param data
@@ -17,9 +20,6 @@ public class ResutVOUtil {
         resultVO.setMsg("成功");
         resultVO.setData(data);
         return  resultVO;
-    }
-    public  static ResultVO success(){
-        return  success();
     }
     /**
      * 查询失败

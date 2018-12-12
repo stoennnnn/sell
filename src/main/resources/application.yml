@@ -6,5 +6,12 @@ spring:
     url: jdbc:mysql://localhost:3306/sell?characterEncoding=utf-8&serverTimezone=UTC&useSSL=false
   jpa:
       show-sql: true
-server: 
+#返回前端不显示null字段
+  jackson:
+    default-property-inclusion: non_null
+server:
   context-path: /sell
+  port: 80
+weixin:
+  appId: wx5271c0fec72093db
+  secretId: 246690309fedaf15eb62ac16ce12bae9

@@ -11,7 +11,7 @@
 	   </layout>
 	</appender>
 	<!-- 文件日志配置 info级别-->
-	<appender name="fileinfolog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+	<appender name="fileinfolog"  class="ch.qos.logback.core.rolling.RollingFileAppender">
        <filter class="ch.qos.logback.classic.filter.LevelFilter">
             <level>warn</level>
             <onMatch>deny</onMatch>
