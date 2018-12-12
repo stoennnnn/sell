@@ -13,3 +13,5 @@ server:
   context-path: /sell
   port: 80
 weixin:
+  appId: wx5271c0fec72093db
+  secretId: 246690309fedaf15eb62ac16ce12bae9
