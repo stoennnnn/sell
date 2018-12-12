@@ -1,5 +1,6 @@
 package com.demo.dataobject;
 
+import com.demo.enums.ProductStatus;
 import lombok.Data;
 import org.hibernate.annotations.DynamicUpdate;
 
@@ -38,7 +39,7 @@ public class ProductInfo {
     private  Integer categoryType;
 
     //商品状态 0 代表正常 1代表下架
-    private  Integer productStatus;
+    private  Integer productStatus = ProductStatus.UP.getCode();
 
     public  ProductInfo(){};
     public ProductInfo(String productId, String productName, BigDecimal productPrice,
@@ -51,6 +52,6 @@ public class ProductInfo {
         this.productDescription = productDescription;
         this.productIcon = productIcon;
         this.categoryType = categoryType;
-        this.productStatus = productStatus;
+        this.productStatus = productStatus ;
     }
 }
