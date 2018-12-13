@@ -27,7 +27,7 @@ public class WeChatController {
     private  WxMpService  wxMpService;
 
     @GetMapping("/authorize")
-    public String authorize(@RequestParam("state") String returnUrl ){
+    public String authorize(@RequestParam("returnUrl") String returnUrl ){
         //配置
         //调用
         String url = "http://zhangql.natapp1.cc/sell/wechat/userInfo";

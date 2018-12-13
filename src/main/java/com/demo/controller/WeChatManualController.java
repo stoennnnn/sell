@@ -15,7 +15,7 @@ import org.springframework.web.client.RestTemplate;
 @RequestMapping
 @Slf4j
 public class WeChatManualController {
-    @GetMapping( 1"/auth")
+    @GetMapping( "/auth")
     public  void  auth(@RequestParam("code") String  code){
         /*
           1.在公众号端设置回调地址
