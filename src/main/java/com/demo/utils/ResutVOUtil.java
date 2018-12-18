@@ -16,7 +16,7 @@ public class ResutVOUtil {
      */
     public  static ResultVO success(Object data){
         ResultVO<Object> resultVO = new ResultVO<>();
-        resultVO.setCode(200);
+        resultVO.setCode(0);
         resultVO.setMsg("成功");
         resultVO.setData(data);
         return  resultVO;
