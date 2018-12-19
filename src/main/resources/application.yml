@@ -15,3 +15,6 @@ server:
 weixin:
   appId: wx5271c0fec72093db
   secretId: 246690309fedaf15eb62ac16ce12bae9
+  mchId: 1509922941
+  mchKey: xinqushikejiyouxiangongsi666666
+  keyPath: C:\Users\26725\Desktop\learn\cert\apiclient_cert.p12
