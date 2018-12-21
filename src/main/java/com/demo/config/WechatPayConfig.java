@@ -17,17 +17,24 @@ public class WechatPayConfig {
 
     @Bean
     public BestPayServiceImpl payConfig(){
-        //公众号配置
-        WxPayH5Config wxPayH5Config =    new WxPayH5Config();
-        wxPayH5Config.setAppId(weChatAccountConfig.getAppId());
-        weChatAccountConfig.setKeyPath(weChatAccountConfig.getKeyPath());
-        weChatAccountConfig.setMchId(weChatAccountConfig.getMchId());
-        weChatAccountConfig.setMchKey(weChatAccountConfig.getMchKey());
-        weChatAccountConfig.setSecretId(weChatAccountConfig.getSecretId());
         //支付类
         BestPayServiceImpl bestPayService = new BestPayServiceImpl();
-        bestPayService.setWxPayH5Config(wxPayH5Config);
+        bestPayService.setWxPayH5Config(this.wxPayH5Config());
         return bestPayService;
     }
+
+    @Bean
+    public WxPayH5Config wxPayH5Config(){
+        //公众号配置
+        WxPayH5Config wxPayH5Config = new WxPayH5Config();
+        wxPayH5Config.setAppId(weChatAccountConfig.getAppId());
+        wxPayH5Config.setKeyPath(weChatAccountConfig.getKeyPath());
+        wxPayH5Config.setMchId(weChatAccountConfig.getMchId());
+        wxPayH5Config.setMchKey(weChatAccountConfig.getMchKey());
+        wxPayH5Config.setAppSecret(weChatAccountConfig.getSecretId());
+        wxPayH5Config.setNotifyUrl(weChatAccountConfig.getNotifyUrl());
+        return wxPayH5Config;
+    }
+
 
 }

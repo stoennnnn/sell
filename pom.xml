@@ -6,7 +6,10 @@
 	<groupId>com.zql</groupId>
 	<artifactId>sell</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+    <modules>
+        <module>../mySpringCloud</module>
+    </modules>
+    <packaging>pom</packaging>
 
 	<name>sell</name>
 	<description>Demo project for Spring Boot</description>

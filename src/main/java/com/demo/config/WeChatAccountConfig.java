@@ -28,4 +28,6 @@ public class WeChatAccountConfig {
      */
     private String keyPath;
 
+    private String notifyUrl;
+
 }
