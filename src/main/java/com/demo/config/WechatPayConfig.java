@@ -35,6 +35,4 @@ public class WechatPayConfig {
         wxPayH5Config.setNotifyUrl(weChatAccountConfig.getNotifyUrl());
         return wxPayH5Config;
     }
-
-
 }
